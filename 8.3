@@ -1,0 +1,23 @@
+import SwiftUI
+import BetterSafariView
+
+var body : some View{
+    NavigationView{
+    Button(action: {
+        self.presentingSafariView = true
+    }){
+        RoundButton(text:"在本应用中打开", image: "arrow.up.forward.app")
+    }.safariView(isPresented: $presentingSafariView){
+        SafariView(
+            url: URL(string: "http://dmoj.mfcode.net/")!, 
+            configuration: SafariView.Configuration(
+                entersReaderIfAvailable: true,
+                barCollaspingEnabled: true
+                )
+            )
+        .preferredBarAccentColor(.clear)
+        .preferredControlAccentColor(.orange)
+        .dismissButtonStyle(.close)
+    }
+}
+}
